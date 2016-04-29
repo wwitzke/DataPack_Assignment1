@@ -3,7 +3,7 @@ library(ggplot2)
 wrongnessBins <<- data.frame( bins = c(-3,-2,-1,0,1,2,3), counts = c(0, 0, 0, 0, 0, 0, 0));
 lifespanBins <<- data.frame( bins = c(0,10,20,30,40,50,60,70,80,90,100), counts = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 wrongnessBinsTemp <<- wrongnessBins;
-lifespanBinsTemp <<- lifespanBinsTemp;
+lifespanBinsTemp <<- lifespanBins;
 
 
 shinyServer(
@@ -189,11 +189,11 @@ shinyServer(
                         }
                         if ( textPicker == 1 )
                         {
-                            magicEvalText = "Oh. My. GOD. We TOLD you to be serious in your estimate! We told you! It's in the instructions! But, noooooo, you just had to try and be funny. Well, guess what, you don't GET an evaluation. You think evaluations are free? You think they grow on trees? THEY DON'T.";
+                            magicEvalText = "Oh. My. GOD. I TOLD you to be serious in your estimate! I told you! It's in the instructions! But, noooooo, you just had to try and be funny. Well, guess what, you don't GET an evaluation. You think evaluations are free? You think they grow on trees? THEY DON'T.";
                         }
                         else if ( textPicker == 2 )
                         {
-                            magicEvalText = "I think probably a syberian tiger hopped up on acid with both dysentary and a crippling addiction to clowns would have been able to provide a better estimate then that. I'd tell you to try again, but honestly, after that poor showing, I think we both know that's not going to do you any good.";
+                            magicEvalText = "I think probably a Siberian tiger hopped up on acid with both dysentary and a crippling addiction to clowns would have been able to provide a better estimate then that. I'd tell you to try again, but honestly, after that poor showing, I think we both know that's not going to do you any good.";
                         }
                         else if ( textPicker == 3 )
                         {
@@ -298,7 +298,7 @@ shinyServer(
                     }
                     else if( degreeOfWrongness == 4 )
                     {
-                        magicCommentText = "Nobody likes a knnow-it-all, and I feel like this is one of the things that you know more than anybody else. Your disturbingly accurate understanding of your lifespan can only indicate that you are depressingly realistic, and therefore so boring that people hate to be around you, or that you cheated, and nobody likes cheaters. Either way, you should be ashamed of yourself. Now, go away and think about what you've done.";
+                        magicCommentText = "Nobody likes a know-it-all, and I feel like this is one of the things that you know more than anybody else. Your disturbingly accurate understanding of your lifespan can only indicate that you are depressingly realistic, and therefore so boring that people hate to be around you, or that you cheated, and nobody likes cheaters. Either way, you should be ashamed of yourself. Now, go away and think about what you've done.";
                     }
                     else if( degreeOfWrongness == 5 )
                     {

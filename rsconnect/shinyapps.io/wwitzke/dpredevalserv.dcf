@@ -1,0 +1,10 @@
+name: dpredevalserv
+account: wwitzke
+server: shinyapps.io
+appId: 98862
+bundleId: 437385
+url: https://wwitzke.shinyapps.io/dpredevalserv/
+when: 1461900827.22196
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md
