@@ -93,7 +93,7 @@ sn.plot = ggplot( sn.data, aes( age, surprise ) ) +
          geom_point( aes( age, surprise ), sn.data ) +
          scale_y_log10( name = "Zalikey's Asjusted Expectation Response (log scale)", breaks = c(0.01,0.1, 1, 10, 100, 1000, 10000, 100000,1000000)) +
          xlab("Age") +
-         ggtitle("Expectation Response due to Death in 30 Respondants of Various Ages") +
+         ggtitle("Expectation Response due to Death in 30 Survey Respondants of Various Ages After Using Software") +
          geom_smooth();
 
 sn.plot
