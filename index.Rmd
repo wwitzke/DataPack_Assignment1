@@ -1,0 +1,105 @@
+---
+title       : Death Prediction Evaluation Service
+subtitle    : or Helping People Cope with the Inevitable
+author      : Wayne Witzke
+framework   : io2012
+highlighter : highlight.js
+hitheme     : tomorrow
+widgets     : [mathjax]
+mode        : selfcontained
+---
+
+```{r setup, echo=FALSE, results="hide", cache=FALSE}
+library(ggplot2);
+```
+
+##  The Problem
+
+```{r SURPRISE, fig.width = 13, fig.height = 6, echo=FALSE, cache=FALSE}
+s.data = data.frame(
+    age = seq(0,120,0.1),
+    surprise = exp(4.7*( pi/2 - atan( ( seq( 0, 120, 0.1 ) - 70 )/8 ) )) +
+               ifelse(seq(0, 120, 0.1)-79<0,0,1)*(seq( 0, 120, 0.1) - 79)^38 / (exp( 12+1.8*seq( 0, 120, 0.1) - 79 ))
+);
+s.plot = ggplot( s.data, aes( age, surprise ) ) +
+         geom_line( aes( age, surprise ), s.data ) +
+         scale_y_log10( name = "Zalikey's Asjusted Expectation Response (log scale)", breaks = c(0, 10, 100, 1000, 10000, 100000,1000000)) +
+         xlab("Age") +
+         ggtitle("Expectation Response due to Death as Measured at Various Ages");
+
+s.plot
+```
+
+* People under the age of 50 are nearly 1 million times more surprised by their
+  own demise (than people over the age of 110)!
+
+---
+
+##  Bad for Society
+
+```{r negative_outcomes, echo = FALSE, fig.width = 13, fig.height = 6, cache=FALSE}
+no.data = data.frame(
+    outcome = c("Anxiety", "Hair Loss", "Confusion", "Accidental Dismemberment", "Hunger", "Public Humiliation", "Death"),
+    count = c( 15, 4, 43, 9, 13, 21, 892 )
+);
+no.data$outcome = factor(no.data$outcome, levels = no.data$outcome);
+
+no.plot = ggplot( no.data, aes( x = outcome, y = count, fill = outcome ) ) +
+          geom_bar( stat = "identity", show.legend = FALSE ) +
+#          theme(
+#            axis.text.x = element_text( angle = -60, hjust = 0 )
+#          ) +
+          ggtitle( "MITT Survey of Negative Outcomes Associated with Surprise Arising from Death") +
+          xlab( "Negative Outcome Type" ) +
+          ylab( "Number of Occurances (out of 1000)") +
+          scale_fill_discrete( name = "" );
+
+no.plot
+```
+
+* Clearly, reducing surprise of death is important for the health and well-being of society!
+
+---
+
+## Our Proposal:<br>The Death Prediction Evaluation Service
+
+* Software that evaluates personal estimates for remaining years before death
+* Provides feedback regarding the quality of those estimates, and helpful tips
+  if those estimates were somewhat off
+* Collects and displays data regarding the estimates made by others
+  * Provides comfort by showing people they are not alone!
+  * Gives people a quantitative measure for how much they need to manage their
+    expectations!
+* After deployment, we predict an eventual 95% reduction in the adjusted
+  expectation response in people under 50 years of age
+  * Young people will then be more like people over the age of 110!
+* https://wwitzke.shinyapps.io/dpredevalserv/
+
+---
+
+## Preliminary Study Results
+
+```{r SURPRISE_revisited, fig.width = 13, fig.height = 5, echo=FALSE, cache=FALSE}
+#set.seed(as.numeric(Sys.time()));
+set.seed(100);
+ages = runif( 30, 5, 120 );
+sim.noise = rnorm( 30, 0, 500 );
+sn.data = data.frame(
+    age = ages,
+    surprise = abs((1+sim.noise)*exp(4.7*( pi/2 - atan( ( ages - 20 )/8 ))) +
+               ifelse(ages-79<0,0,1)*(ages - 79)^38 / (exp( 12+1.8*ages - 79 ))
+));
+sn.plot = ggplot( sn.data, aes( age, surprise ) ) +
+         geom_point( aes( age, surprise ), sn.data ) +
+         scale_y_log10( name = "Zalikey's Asjusted Expectation Response (log scale)", breaks = c(0.01,0.1, 1, 10, 100, 1000, 10000, 100000,1000000)) +
+         xlab("Age") +
+         ggtitle("Expectation Response due to Death in 30 Respondants of Various Ages") +
+         geom_smooth();
+
+sn.plot
+```
+
+* Clearly significant reduction in response in respondants under 50 years of age!
+* Note impressively small confidence interval of fit line!
+* Please give us money!
+
